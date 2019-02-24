@@ -15,6 +15,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    'no-attrs-in-components': false,
   },
   overrides: [
     // node files

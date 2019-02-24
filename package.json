@@ -24,11 +24,12 @@
     "ember-cli-babel": "^7.1.2"
   },
   "devDependencies": {
-    "broccoli-caching-writer": "^3.0.3",
     "@ember/optional-features": "^0.6.3",
     "broccoli-asset-rev": "^2.7.0",
+    "broccoli-caching-writer": "^3.0.3",
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^3.0.2",
+    "ember-auto-import": "^1.2.21",
     "ember-cli": "~3.7.1",
     "ember-cli-dependency-checker": "^3.0.0",
     "ember-cli-eslint": "^4.2.3",
@@ -49,6 +50,7 @@
     "ember-try": "^1.0.0",
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-node": "^7.0.1",
+    "lit-element": "^2.0.1",
     "loader.js": "^4.7.0",
     "lodash": "^4.17.11",
     "qunit-dom": "^0.8.0"

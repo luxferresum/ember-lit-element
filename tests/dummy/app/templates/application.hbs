@@ -1,1 +1,9 @@
-<MyElement />
+<MyElement
+  @propstr={{this.propStr}}
+  @propnum={{this.propNum}}
+  @propbool={{this.propBool}}
+  @proparr={{this.propArr}}
+  @propobj={{this.propObj}}
+/>
+
+<button onclick={{action (mut this.propStr) 'foobar'}}> test</button>

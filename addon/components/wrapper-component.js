@@ -2,10 +2,20 @@ import {
   default as Component,
 } from '@ember/component';
 
+function shouldSetAttr(val) {
+  return val !== false && val !== null && val !== undefined;
+}
+
+function serialize(value) {
+  if(typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+  return value;
+}
+
 export default class WrapperComponent extends Component {
   constructor() {
     super(...arguments);
-    this.attributes = [];
   }
 
   didReceiveAttrs() {
@@ -19,22 +29,15 @@ export default class WrapperComponent extends Component {
   }
 
   setAttrs() {
-    const existingAttrs = [];
-
-    // update existing attrs
-    for(const attribute of this.attributes) {
-      attribute.value = this.attrs[attribute.name];
-      existingAttrs.push(attribute.name);
-    }
-
-    const newAttrs = Object.entries(this.attrs)
-      .filter(key => !existingAttrs.includes(key));
-
-    for(const [name, value] of newAttrs) {
-      const attribute = document.createAttribute(name);
-      attribute.value = value;
-      this.element.setAttributeNode(attribute);
-      this.attributes.push(attribute);
+    for(const name of Object.keys(this.attrs)) {
+      const value = this[name];
+      if(shouldSetAttr(value)) {
+        this.element.setAttribute(name, serialize(value));
+      } else {
+        if(this.element.hasAttribute(name)) {
+          this.element.removeAttribute(name)
+        }
+      }
     }
   }
 }

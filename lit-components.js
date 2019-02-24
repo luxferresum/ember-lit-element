@@ -19,7 +19,15 @@ class LitComponents extends Plugin {
         import LitElement from '../lit-elements/${name}';
         import WrapperComponent from 'ember-lit-element/components/wrapper-component';
 
-        customElements.define('${fp.kebabCase(name)}', LitElement);
+        const registeredElement = customElements.get('${fp.kebabCase(name)}');
+        if(registeredElement) {
+          if(LitElement !== registeredElement) {
+            throw 'another custom element with the name ${fp.kebabCase(name)} is already defined.';
+          }
+        } else {
+          customElements.define('${fp.kebabCase(name)}', LitElement);
+        }
+
 
         export default WrapperComponent.extend({ tagName: '${fp.kebabCase(name)}' });
       `);
