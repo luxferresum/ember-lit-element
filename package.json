@@ -5,7 +5,10 @@
   "keywords": [
     "ember-addon"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxferresum/ember-lit-element.git"
+  },
   "license": "MIT",
   "author": "",
   "directories": {
